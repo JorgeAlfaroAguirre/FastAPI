@@ -1,2 +1,7 @@
 fastapi
 uvicorn
+sqlmodel
+pyodbc
+python-dotenv
+bcrypt
+pydantic[email]
