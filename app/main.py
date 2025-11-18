@@ -1,5 +1,6 @@
 from datetime import datetime
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.controllers.hello_controller import router as hello_router
 from app.controllers.db_controller import router as db_router
 from app.controllers.user_controller import router as user_router
@@ -10,6 +11,15 @@ from app.controllers.cv_controller import router as cv_router
 from app.controllers.admin_controller import router as admin_router
 
 app = FastAPI(title="BaristaApp API")
+
+# Configuración de CORS - Abierto para proyecto universitario
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite peticiones desde cualquier origen
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos los métodos (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],  # Permite todos los headers
+)
 
 # Registro de routers
 app.include_router(hello_router)
